@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORA Fashion Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SORA</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="login-btn" class="auth-btn">Login</button></li>
+                <li><button id="register-btn" class="auth-btn">Register</button></li>
+            </ul>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+            <div class="profile-icon-nav">
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to SORA Fashion</h1>
+        <p>Discover the latest trends in fashion</p>
+        <a href="#collection" class="cta-button">Shop Now</a>
+    </section>
+
+    <section id="collection" class="products">
+        <h2>Our Collection</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800" alt="Elegant Dress">
+                <h3>Elegant Dress</h3>
+                <p>₱4,999.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800" alt="Casual Shirt">
+                <h3>Casual Shirt</h3>
+                <p>₱2,499.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800" alt="Designer Jeans">
+                <h3>Designer Jeans</h3>
+                <p>₱3,999.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About SORA</h2>
+        <p>SORA Fashion Store is your destination for trendy and sophisticated clothing. We believe in providing high-quality fashion that makes you feel confident and stylish.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2024 SORA Fashion Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add this checkout modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: <span id="cart-total">₱0.00</span></h3>
+            </div>
+            <button id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Add this success message div after the checkout modal -->
+    <div id="success-message" class="success-modal">
+        <div class="success-content">
+            <span class="close-success">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h2>Thank You!</h2>
+            <p>Your order has been successfully placed.</p>
+            <button id="continue-shopping">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content auth-content">
+            <span class="close-auth">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" class="auth-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <span class="switch-auth" data-target="register">Register here</span></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content auth-content">
+            <span class="close-auth">&times;</span>
+            <h2>Register</h2>
+            <form id="register-form" class="auth-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <div class="profile-upload">
+                    <label for="profile-pic">Profile Picture</label>
+                    <input type="file" id="profile-pic" accept="image/*" class="file-input">
+                    <div class="preview-container">
+                        <img id="preview-image" src="https://via.placeholder.com/150" alt="Preview">
+                    </div>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <span class="switch-auth" data-target="login">Login here</span></p>
+        </div>
+    </div>
+
+    <!-- Add this after the register modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content auth-content">
+            <span class="close-profile">&times;</span>
+            <div class="profile-header">
+                <div class="profile-pic-container">
+                    <img id="profile-picture" src="https://via.placeholder.com/150" alt="Profile Picture">
+                    <div class="change-photo">
+                        <label for="change-profile-pic">
+                            <i class="fas fa-camera"></i>
+                            Change Photo
+                        </label>
+                        <input type="file" id="change-profile-pic" accept="image/*" hidden>
+                    </div>
+                </div>
+                <h2>My Profile</h2>
+            </div>
+            <div class="profile-info">
+                <div class="info-group">
+                    <label>Name:</label>
+                    <p id="profile-name">John Doe</p>
+                </div>
+                <div class="info-group">
+                    <label>Email:</label>
+                    <p id="profile-email">john@example.com</p>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button id="edit-profile-btn">Edit Profile</button>
+                <button id="order-history-btn">Order History</button>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
